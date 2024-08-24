@@ -8,3 +8,22 @@
     gap: 2rem;
     align-items: flex-start;
 }
+@media (max-width: 768px) {
+
+    html {
+        font-size: 87.5%;
+    }
+    .wrapper{
+        grid-template-columns: 1fr; /* o grid fica só com uma coluna e não duas */
+    }
+}
+
+/* 
+
+16px -> 100%
+14px -> x%
+resultado 87.5%
+
+para colocar na responsividade
+
+*/

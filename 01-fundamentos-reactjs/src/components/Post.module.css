@@ -90,12 +90,12 @@
 }
 
 .commentForm footer {
-    visibility: hidden;
+    visibility: hidden; /* botão "Post" invisível se textarea não estiver em foco */
     max-height: 0;
 }
 
 .commentForm:focus-within footer {
-    visibility: visible;
+    visibility: visible; /* botão "Post" visível somente quando possuir foco no textarea */
     max-height: none;
 }
 
