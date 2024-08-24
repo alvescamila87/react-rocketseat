@@ -1,7 +1,20 @@
+import Post from "./Post"
+
 function App() {
   return (
-    <h1>Hello world</h1>
+    <div>
+      <Post 
+        author="Camila"
+        content="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "        
+      />
+      <Post 
+        author="Madalena"
+        content="Post related to the social media"        
+      />
+    </div>
   )
 }
 
 export default App
+
+
