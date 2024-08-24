@@ -2,6 +2,10 @@ import { Avatar } from './Avatar'
 import { CommentPost } from './CommentPost'
 import styles from './Post.module.css'
 
+// author: { avatar_url: "", name: "", role: "" }
+// publishedAt: Date
+// content: String
+
 export function Post() {
     return (
         <article className={styles.post}>
