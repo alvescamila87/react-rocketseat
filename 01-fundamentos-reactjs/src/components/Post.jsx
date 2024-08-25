@@ -8,6 +8,12 @@ import styles from './Post.module.css'
 // publishedAt: Date
 // content: String
 
+const comments = [
+    1,
+    2,
+    3,
+];
+
 export function Post({ author, publishedAt, content }) {
     //console.log(props)
 
@@ -58,9 +64,11 @@ export function Post({ author, publishedAt, content }) {
                 </footer>
             </form>
             <div className={styles.commentList}>
-                <CommentPost />
-                <CommentPost />
-                <CommentPost />
+                {comments.map(comment => {
+                    return (
+                        <CommentPost />
+                    )
+                })}
             </div>
         </article>
     )
