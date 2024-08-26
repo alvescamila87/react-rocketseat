@@ -3,19 +3,28 @@ import { enUS } from 'date-fns/locale';
 import { Avatar } from './Avatar'
 import { CommentPost } from './CommentPost'
 import styles from './Post.module.css'
+import { useState } from 'react';
 
 // author: { avatar_url: "", name: "", role: "" }
 // publishedAt: Date
 // content: String
 
+/*
 const comments = [
     1,
     2,
     3,
-];
+]; 
+
+*/
 
 export function Post({ author, publishedAt, content }) {
     //console.log(props)
+
+    const [comments, setComments] = useState([
+        1,
+        2,
+    ])
 
     const publishedDateFormatted = format(publishedAt, "LLLL',' d yyyy 'at' hh:mm aaaa");
 
@@ -23,6 +32,20 @@ export function Post({ author, publishedAt, content }) {
         locale: enUS,
         addSuffix: true,
     })
+
+    function handleCreateNewComment(){
+        event.preventDefault();
+        //console.log('Hi');
+
+        //comments.push(3);
+        //console.log(comments)
+
+        // imutabilidade
+        //setComments([1, 2, 3]);
+
+        // spread operator
+        setComments([...comments, comments.length + 1]);
+    }
 
     return (
         <article className={styles.post}>
@@ -52,7 +75,7 @@ export function Post({ author, publishedAt, content }) {
                 })}
             </div>
 
-            <form className={styles.commentForm}>
+            <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
                 <strong>Leave your feedback</strong>
 
                 <textarea 
