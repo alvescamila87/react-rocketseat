@@ -22,8 +22,7 @@ export function Post({ author, publishedAt, content }) {
     //console.log(props)
 
     const [comments, setComments] = useState([
-        1,
-        2,
+        'Amazing, man!'
     ])
 
     const publishedDateFormatted = format(publishedAt, "LLLL',' d yyyy 'at' hh:mm aaaa");
@@ -32,6 +31,8 @@ export function Post({ author, publishedAt, content }) {
         locale: enUS,
         addSuffix: true,
     })
+
+    const [newCommentPostText, setNewCommentPostText] = useState('');
 
     function handleCreateNewComment(){
         event.preventDefault();
@@ -43,8 +44,26 @@ export function Post({ author, publishedAt, content }) {
         // imutabilidade
         //setComments([1, 2, 3]);
 
+        // adicionar comentário
+        //console.log(event.target.commentPost.value)
+        //const newCommentPostText = event.target.commentPost.value
+
         // spread operator
-        setComments([...comments, comments.length + 1]);
+        setComments([...comments, newCommentPostText]);
+
+        // limpar comentário - forma imperativa
+        //event.target.commentPost.value = "";
+
+        // limpar comentário - forma declarativa
+        setNewCommentPostText('');
+    }
+
+    function newCommentPostTextChange() {
+        //console.log('teste')
+        console.log(event.target.value)
+
+        // armazenar valor de comentário digitado
+        setNewCommentPostText(event.target.value);
     }
 
     return (
@@ -79,7 +98,11 @@ export function Post({ author, publishedAt, content }) {
                 <strong>Leave your feedback</strong>
 
                 <textarea 
-                    placeholder='Leave a comment...'>
+                    name="commentPost"
+                    placeholder='Leave a comment...'
+                    value={newCommentPostText}
+                    onChange={newCommentPostTextChange}
+                >
                 </textarea>
 
                 <footer> 
@@ -89,7 +112,7 @@ export function Post({ author, publishedAt, content }) {
             <div className={styles.commentList}>
                 {comments.map(comment => {
                     return (
-                        <CommentPost />
+                        <CommentPost content={comment} />
                     )
                 })}
             </div>
